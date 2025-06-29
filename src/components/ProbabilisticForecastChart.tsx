@@ -12,7 +12,8 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
+// import {Bar} from 'react-chartjs-2';
 import { useMemo } from 'react';
 import { extractPerQuantileForecasts } from '@/utils/processData';
 import 'chartjs-adapter-luxon';
@@ -29,7 +30,7 @@ ChartJS.register(
   Filler
 );
 
-type ForecastEntry = {
+export type ForecastEntry = {
   start_date: string;
   quantile_value: number;
   forecast_value: number;

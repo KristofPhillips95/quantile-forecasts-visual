@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react';
 import { fetchForecastData } from '@/utils/fetchData';
 import {ProbabilisticForecastLineChart} from './ProbabilisticForecastChart';
+import type { ForecastEntry } from './ProbabilisticForecastChart';
+
 
 export default function ForecastClient() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<ForecastEntry[]>([]);
     const now = new Date();
     const start = new Date(now.getTime()).toISOString(); // -1h
     const end = new Date(now.getTime() + 4 * 60 * 60 * 1000).toISOString(); // +4h
