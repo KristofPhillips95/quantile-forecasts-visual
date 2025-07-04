@@ -11,7 +11,12 @@ import type { ForecastEntry } from './ProbabilisticForecastChart';
 // import DaPriceChart from './DARangeChart';
 // import RangeForecastBarChart from './RangeForecastBarChart';
 // import RangeForecastPlot from './RangeForecastPlot';
-import DaPriceWithRangeBarsChart from './DAPriceWithRangeBarsChart';
+
+import dynamic from 'next/dynamic';
+
+const DaPriceWithRangeBarsChart = dynamic(() => import('@/components/DAPriceWithRangeBarsChart'), {
+  ssr: false,
+});
 
 export default function ForecastClient() {
   const [data, setData] = useState<ForecastEntry[]>([]);

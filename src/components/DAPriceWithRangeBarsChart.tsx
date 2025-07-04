@@ -1,3 +1,4 @@
+//src/components/DAPriceWithRangeBarsChart.tsx
 'use client';
 
 import Plot from 'react-plotly.js';
