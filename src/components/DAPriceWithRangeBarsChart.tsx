@@ -58,6 +58,7 @@ export default function DaPriceWithRangeBarsChart({ rangeData, daPrices }: Props
         title: { text: 'Prob. Density' },
     // @ts-expect-error -- 'titleside' is missing from types, but supported by Plotly
         titleside: 'right',
+        y: 0.5
       },
       cmin: minProb,
       cmax: maxProb,
@@ -94,18 +95,25 @@ export default function DaPriceWithRangeBarsChart({ rangeData, daPrices }: Props
   return (
     <Plot
       data={[barTrace, ...(daTrace ? [daTrace] : [])]}
-      layout={{
-        title: { text: 'Range Forecast with DA Price', font: { size: 18 } },
-        xaxis: {
-          title: { text: 'Time (Europe/Brussels)' },
-          tickformat: '%H:%M',
-          tickangle: -30,
-        },
-        yaxis: { title: { text: 'Value (€/MWh)' } },
-        bargap: 0.1,
-        margin: { t: 30, b: 60, l: 50, r: 20 },
-        height: 400,
-      }}
+    layout={{
+    title: { text: 'Range Forecast with DA Price', font: { size: 18 } },
+    xaxis: {
+        title: { text: 'Time (Europe/Brussels)' },
+        tickformat: '%H:%M',
+        tickangle: -30,
+    },
+    yaxis: { title: { text: 'Value (€/MWh)' } },
+    bargap: 0.1,
+    margin: { t: 30, b: 60, l: 50, r: 80 }, // extra space on right
+    height: 400,
+    legend: {
+        x: .0,         // move to the right of the plot
+        y: 1,            // top
+        xanchor: 'left', // anchor from the left edge of legend box
+        yanchor: 'top',
+        orientation: 'v', // vertical orientation (optional)
+    },
+    }}
       config={{ responsive: true }}
       style={{ width: '100%' }}
     />
