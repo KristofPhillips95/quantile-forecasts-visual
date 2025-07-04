@@ -23,36 +23,35 @@ export default function ForecastClient() {
   const [daPrices, setDaPrices] = useState<DaPricePoint[]>([]);
   const [rangeData, setRangeData] = useState<RangeForecastPoint[]>([]);
 
-  const now = new Date();
-  const start = new Date(now.getTime()-  1 * 60 * 60 * 1000).toISOString();
-  const end = new Date(now.getTime() + 4 * 60 * 60 * 1000).toISOString();
-
-  const startDA = new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString();
-  const endDA = new Date(now.getTime() + 6 * 60 * 60 * 1000).toISOString();
-
   async function load() {
-    try {
-      const result = await fetchForecastData(start, end);
-      setData(result);
-    } catch (err) {
-      console.error('Failed to fetch forecast data:', err);
-    }
+    const now = new Date();
+    const start = new Date(now.getTime() - 3 * 15 * 60 * 1000).toISOString();
+    const end = new Date(now.getTime() + 4 * 60 * 60 * 1000).toISOString();
 
-    try {
-      const xml = await fetchEntsoeData(start, end, 'dayaheadprices', 'BE');
-      const parsed = parseEntsoeXml(xml);
-      const filtered = filterDaPricePoints(parsed, startDA, endDA);
-      setDaPrices(filtered);
-    } catch (err) {
-      console.error('Error fetching ENTSO-E data:', err);
-    }
-    try {
-      const jsonRangeData = await fetchRangeForecastData(start, end);
-      const parsed  = convertRangeForecastToPlotPoints(jsonRangeData);
-      setRangeData(parsed);
-    } catch (err) {
-      console.error('Failed to fetch range forecast data:', err);
-    }
+    const startDA = new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString();
+    const endDA = new Date(now.getTime() + 6 * 60 * 60 * 1000).toISOString();
+      try {
+        const result = await fetchForecastData(start, end);
+        setData(result);
+      } catch (err) {
+        console.error('Failed to fetch forecast data:', err);
+      }
+
+      try {
+        const xml = await fetchEntsoeData(start, end, 'dayaheadprices', 'BE');
+        const parsed = parseEntsoeXml(xml);
+        const filtered = filterDaPricePoints(parsed, startDA, endDA);
+        setDaPrices(filtered);
+      } catch (err) {
+        console.error('Error fetching ENTSO-E data:', err);
+      }
+      try {
+        const jsonRangeData = await fetchRangeForecastData(start, end);
+        const parsed  = convertRangeForecastToPlotPoints(jsonRangeData);
+        setRangeData(parsed);
+      } catch (err) {
+        console.error('Failed to fetch range forecast data:', err);
+      }
     
   }
 
