@@ -55,7 +55,7 @@ export default function DaPriceWithRangeBarsChart({ rangeData, daPrices }: Props
 
       colorbar: {
         title: { text: 'Prob. Density' },
-        // @ts-ignore: `titleside` is valid in Plotly but missing in TS defs
+    // @ts-expect-error -- 'titleside' is missing from types, but supported by Plotly
         titleside: 'right',
       },
       cmin: minProb,
