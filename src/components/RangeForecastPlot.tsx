@@ -16,10 +16,10 @@ export default function RangeForecastPlot({ data }: Props) {
   const timestamps = data.map(d => d.timestamp);
   const base = data.map(d => d.lower_bound);
   const height = data.map(d => d.upper_bound - d.lower_bound);
-  const probabilities = data.map(d => d.probability);
-const probDensities = data.map(d => d.probability / (d.upper_bound - d.lower_bound));
-const minProb = Math.min(...probDensities);
-const maxProb = Math.max(...probDensities);
+  // const probabilities = data.map(d => d.probability);
+  const probDensities = data.map(d => d.probability / (d.upper_bound - d.lower_bound));
+  const minProb = Math.min(...probDensities);
+  const maxProb = Math.max(...probDensities);
 
 return (
   <Plot

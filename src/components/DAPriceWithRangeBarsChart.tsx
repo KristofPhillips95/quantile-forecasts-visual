@@ -31,7 +31,7 @@ export default function DaPriceWithRangeBarsChart({ rangeData, daPrices }: Props
       hour: '2-digit',
       minute: '2-digit',
     });
-    const density = (d.probability / (d.upper_bound - d.lower_bound)).toFixed(4);
+    // const density = (d.probability / (d.upper_bound - d.lower_bound)).toFixed(4);
     // return `Time: ${time}<br>Lower: ${d.lower_bound.toFixed(2)}<br>Upper: ${d.upper_bound.toFixed(2)}<br>Density: ${density}`;
     return `Time: ${time}<br>Lower: ${d.lower_bound.toFixed(2)}<br>Upper: ${d.upper_bound.toFixed(2)}<br>Probability: ${d.probability }`;
 
@@ -45,12 +45,12 @@ export default function DaPriceWithRangeBarsChart({ rangeData, daPrices }: Props
     marker: {
       color: probDensities,
     colorscale: [
-        [0.0, 'rgba(200, 200, 200, 0.2)'],   // light gray, low opacity
-        [0.25, 'rgba(160, 160, 160, 0.4)'],
-        [0.5, 'rgba(255, 100, 100, 0.6)'],
-        [0.75, 'rgba(255, 50, 50, 0.8)'],
-        [1.0, 'rgba(255, 0, 0, 1.0)'],       // intense red
-        ],
+    [0.0, 'rgba(180, 180, 180, 0.2)'],  // light grey
+    [0.2, 'rgba(220, 120, 120, 0.4)'],  // light red already at 20%
+    [0.4, 'rgba(240, 80, 80, 0.6)'],    // stronger red at 40%
+    [0.6, 'rgba(255, 40, 40, 0.7)'],    // even stronger
+    [1.0, 'rgba(255, 0, 34, 0.8)'],     // peak intensity
+    ],
     
 
       colorbar: {
