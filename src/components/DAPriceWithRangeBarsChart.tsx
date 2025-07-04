@@ -55,7 +55,7 @@ export default function DaPriceWithRangeBarsChart({ rangeData, daPrices }: Props
     
 
       colorbar: {
-        title: { text: 'Prob. Density' },
+        title: { text: 'Prob. Density [(MWh/€)]' },
     // @ts-expect-error -- 'titleside' is missing from types, but supported by Plotly
         titleside: 'right',
         y: 0.5
@@ -102,7 +102,7 @@ export default function DaPriceWithRangeBarsChart({ rangeData, daPrices }: Props
         tickformat: '%H:%M',
         tickangle: -30,
     },
-    yaxis: { title: { text: 'Value (€/MWh)' } },
+    yaxis: { title: { text: 'Price (€/MWh)' } },
     bargap: 0.1,
     margin: { t: 30, b: 60, l: 50, r: 80 }, // extra space on right
     height: 400,
