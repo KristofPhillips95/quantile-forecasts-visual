@@ -11,6 +11,7 @@ import type { ForecastEntry } from './ProbabilisticForecastChart';
 // import DaPriceChart from './DARangeChart';
 // import RangeForecastBarChart from './RangeForecastBarChart';
 // import RangeForecastPlot from './RangeForecastPlot';
+import ForecastProbabilityTable from './ForecastProbabilityTable';
 
 import dynamic from 'next/dynamic';
 
@@ -73,6 +74,9 @@ export default function ForecastClient() {
       <RangeForecastPlot data={rangeData} /> */}
       <h2 className="text-xl font-semibold mb-4">Range Forecast Bar Chart</h2>
       <DaPriceWithRangeBarsChart daPrices = {daPrices} rangeData={rangeData} />
+      <h2 className="text-xl font-semibold mb-4">Probability table</h2>
+      <ForecastProbabilityTable daPrices={daPrices} rangeData={rangeData}/>
+
       {/* <h2 className="text-xl font-semibold mb-4">Range Forecast Plot</h2>
       <RangeForecastPlot data={testData as RangeForecastPoint[]} /> */}
       {/* <RangeForecastPlot data={rangeData} /> */}
