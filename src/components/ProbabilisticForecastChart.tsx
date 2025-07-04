@@ -126,7 +126,7 @@ export function ProbabilisticForecastLineChart({ data }: Props) {
       ? (Math.exp(-5 * Math.abs(q - 0.5))).toFixed(2) 
       : '1.0';
         return {
-          label: q === 0.5 ? 'Median (0.5)' : `Quantile ${quantileRange}`,
+          label: q === 0.5 ? 'Median (0.5)' : `Quantile ${q}`,
           data: byQuantile[q],
           borderColor: `rgba(0, 100, 255, ${baseOpacity})`,
           backgroundColor: `rgba(0, 100, 255, ${baseOpacity})`,
