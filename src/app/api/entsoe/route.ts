@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   const dataset = url.searchParams.get('dataset');
 
   const API_KEY = process.env.ENTSOE_API_KEY;
-
+  console.log("ENTSOE API Key:", API_KEY);
   if (!API_KEY || !start || !end || !country || !dataset) {
     return new NextResponse("Missing required parameters or API key", { status: 400 });
   }
